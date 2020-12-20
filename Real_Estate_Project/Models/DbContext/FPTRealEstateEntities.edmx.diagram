@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="61e327f33ed549428cd01ff4637155a4" Name="Diagram1">
+        <EntityTypeShape EntityType="FPTRealEstateModel.CustomerInfomation" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HomeInfomation" Width="1.5" PointX="7.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseCategory" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseFeature" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseFeaturesMap" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseInfomation" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseRoom" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseRoomsMap" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseType" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.HouseTypesMap" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTRealEstateModel.sysdiagram" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="FPTRealEstateModel.FK_HouseInfomation_HouseCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="FPTRealEstateModel.FK_HouseFeaturesMap_HouseFeatures" ManuallyRouted="false" />
+        <AssociationConnector Association="FPTRealEstateModel.FK_HouseInfomation_HouseFeaturesMap" ManuallyRouted="false" />
+        <AssociationConnector Association="FPTRealEstateModel.FK_HouseRoomsMap_HouseInfomation" ManuallyRouted="false" />
+        <AssociationConnector Association="FPTRealEstateModel.FK_HouseTypesMap_HouseInfomation" ManuallyRouted="false" />
+        <AssociationConnector Association="FPTRealEstateModel.FK_HouseRoomsMap_HouseRooms" ManuallyRouted="false" />
+        <AssociationConnector Association="FPTRealEstateModel.FK_HouseTypesMap_HouseType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

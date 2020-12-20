@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FPTRealEstateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CustomerInfomation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDay" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="IsDelete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="HomeInfomation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ContactEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ContactAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsDelete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="HouseCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HouseInfomations" Relationship="Self.FK_HouseInfomation_HouseCategory" FromRole="HouseCategory" ToRole="HouseInfomation" />
+  </EntityType>
+  <EntityType Name="HouseFeature">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FeatureName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HouseFeaturesMaps" Relationship="Self.FK_HouseFeaturesMap_HouseFeatures" FromRole="HouseFeatures" ToRole="HouseFeaturesMap" />
+  </EntityType>
+  <EntityType Name="HouseFeaturesMap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HouseId" Type="Int32" />
+    <Property Name="HouseFeatureId" Type="Int32" />
+    <NavigationProperty Name="HouseFeature" Relationship="Self.FK_HouseFeaturesMap_HouseFeatures" FromRole="HouseFeaturesMap" ToRole="HouseFeatures" />
+    <NavigationProperty Name="HouseInfomation" Relationship="Self.FK_HouseInfomation_HouseFeaturesMap" FromRole="HouseFeaturesMap" ToRole="HouseInfomation" />
+  </EntityType>
+  <EntityType Name="HouseInfomation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HouseCategoryId" Type="Int32" />
+    <Property Name="HouseName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HouseTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RoomNumber" Type="Int32" />
+    <Property Name="FloorNumber" Type="Int32" />
+    <Property Name="YearEstablish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LocationLat" Type="Double" />
+    <Property Name="LocationLng" Type="Double" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="HouseCategory" Relationship="Self.FK_HouseInfomation_HouseCategory" FromRole="HouseInfomation" ToRole="HouseCategory" />
+    <NavigationProperty Name="HouseFeaturesMap" Relationship="Self.FK_HouseInfomation_HouseFeaturesMap" FromRole="HouseInfomation" ToRole="HouseFeaturesMap" />
+    <NavigationProperty Name="HouseRoomsMaps" Relationship="Self.FK_HouseRoomsMap_HouseInfomation" FromRole="HouseInfomation" ToRole="HouseRoomsMap" />
+    <NavigationProperty Name="HouseTypesMaps" Relationship="Self.FK_HouseTypesMap_HouseInfomation" FromRole="HouseInfomation" ToRole="HouseTypesMap" />
+  </EntityType>
+  <EntityType Name="HouseRoom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HouseRoomsMaps" Relationship="Self.FK_HouseRoomsMap_HouseRooms" FromRole="HouseRooms" ToRole="HouseRoomsMap" />
+  </EntityType>
+  <EntityType Name="HouseRoomsMap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HouseId" Type="Int32" />
+    <Property Name="HouseRoomId" Type="Int32" />
+    <Property Name="QuantityRoom" Type="Double" />
+    <NavigationProperty Name="HouseInfomation" Relationship="Self.FK_HouseRoomsMap_HouseInfomation" FromRole="HouseRoomsMap" ToRole="HouseInfomation" />
+    <NavigationProperty Name="HouseRoom" Relationship="Self.FK_HouseRoomsMap_HouseRooms" FromRole="HouseRoomsMap" ToRole="HouseRooms" />
+  </EntityType>
+  <EntityType Name="HouseType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HouseTypesMaps" Relationship="Self.FK_HouseTypesMap_HouseType" FromRole="HouseType" ToRole="HouseTypesMap" />
+  </EntityType>
+  <EntityType Name="HouseTypesMap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HouseId" Type="Int32" />
+    <Property Name="HouseTypeId" Type="Int32" />
+    <NavigationProperty Name="HouseInfomation" Relationship="Self.FK_HouseTypesMap_HouseInfomation" FromRole="HouseTypesMap" ToRole="HouseInfomation" />
+    <NavigationProperty Name="HouseType" Relationship="Self.FK_HouseTypesMap_HouseType" FromRole="HouseTypesMap" ToRole="HouseType" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_HouseInfomation_HouseCategory">
+    <End Role="HouseCategory" Type="Self.HouseCategory" Multiplicity="0..1" />
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseInfomation">
+        <PropertyRef Name="HouseCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseFeaturesMap_HouseFeatures">
+    <End Role="HouseFeatures" Type="Self.HouseFeature" Multiplicity="0..1" />
+    <End Role="HouseFeaturesMap" Type="Self.HouseFeaturesMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseFeatures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseFeaturesMap">
+        <PropertyRef Name="HouseFeatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseInfomation_HouseFeaturesMap">
+    <End Role="HouseFeaturesMap" Type="Self.HouseFeaturesMap" Multiplicity="1" />
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HouseFeaturesMap">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseInfomation">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseRoomsMap_HouseInfomation">
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="0..1" />
+    <End Role="HouseRoomsMap" Type="Self.HouseRoomsMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseInfomation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseRoomsMap">
+        <PropertyRef Name="HouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseTypesMap_HouseInfomation">
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="0..1" />
+    <End Role="HouseTypesMap" Type="Self.HouseTypesMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseInfomation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseTypesMap">
+        <PropertyRef Name="HouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseRoomsMap_HouseRooms">
+    <End Role="HouseRooms" Type="Self.HouseRoom" Multiplicity="0..1" />
+    <End Role="HouseRoomsMap" Type="Self.HouseRoomsMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseRooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseRoomsMap">
+        <PropertyRef Name="HouseRoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseTypesMap_HouseType">
+    <End Role="HouseType" Type="Self.HouseType" Multiplicity="0..1" />
+    <End Role="HouseTypesMap" Type="Self.HouseTypesMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseTypesMap">
+        <PropertyRef Name="HouseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FPTRealEstateEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerInfomations" EntityType="Self.CustomerInfomation" />
+    <EntitySet Name="HomeInfomations" EntityType="Self.HomeInfomation" />
+    <EntitySet Name="HouseCategories" EntityType="Self.HouseCategory" />
+    <EntitySet Name="HouseFeatures" EntityType="Self.HouseFeature" />
+    <EntitySet Name="HouseFeaturesMaps" EntityType="Self.HouseFeaturesMap" />
+    <EntitySet Name="HouseInfomations" EntityType="Self.HouseInfomation" />
+    <EntitySet Name="HouseRooms" EntityType="Self.HouseRoom" />
+    <EntitySet Name="HouseRoomsMaps" EntityType="Self.HouseRoomsMap" />
+    <EntitySet Name="HouseTypes" EntityType="Self.HouseType" />
+    <EntitySet Name="HouseTypesMaps" EntityType="Self.HouseTypesMap" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_HouseInfomation_HouseCategory" Association="Self.FK_HouseInfomation_HouseCategory">
+      <End Role="HouseCategory" EntitySet="HouseCategories" />
+      <End Role="HouseInfomation" EntitySet="HouseInfomations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseFeaturesMap_HouseFeatures" Association="Self.FK_HouseFeaturesMap_HouseFeatures">
+      <End Role="HouseFeatures" EntitySet="HouseFeatures" />
+      <End Role="HouseFeaturesMap" EntitySet="HouseFeaturesMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseInfomation_HouseFeaturesMap" Association="Self.FK_HouseInfomation_HouseFeaturesMap">
+      <End Role="HouseFeaturesMap" EntitySet="HouseFeaturesMaps" />
+      <End Role="HouseInfomation" EntitySet="HouseInfomations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseRoomsMap_HouseInfomation" Association="Self.FK_HouseRoomsMap_HouseInfomation">
+      <End Role="HouseInfomation" EntitySet="HouseInfomations" />
+      <End Role="HouseRoomsMap" EntitySet="HouseRoomsMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseTypesMap_HouseInfomation" Association="Self.FK_HouseTypesMap_HouseInfomation">
+      <End Role="HouseInfomation" EntitySet="HouseInfomations" />
+      <End Role="HouseTypesMap" EntitySet="HouseTypesMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseRoomsMap_HouseRooms" Association="Self.FK_HouseRoomsMap_HouseRooms">
+      <End Role="HouseRooms" EntitySet="HouseRooms" />
+      <End Role="HouseRoomsMap" EntitySet="HouseRoomsMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseTypesMap_HouseType" Association="Self.FK_HouseTypesMap_HouseType">
+      <End Role="HouseType" EntitySet="HouseTypes" />
+      <End Role="HouseTypesMap" EntitySet="HouseTypesMaps" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FPTRealEstateModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FPTRealEstateModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

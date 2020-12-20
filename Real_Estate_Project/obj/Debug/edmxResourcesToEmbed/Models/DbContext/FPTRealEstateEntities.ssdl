@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FPTRealEstateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CustomerInfomation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="BirthDay" Type="date" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyCode" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="HomeInfomation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContactPhone" Type="varchar" MaxLength="20" />
+    <Property Name="ContactEmail" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContactAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="Logo" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="HouseCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="HouseFeatures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeatureName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="HouseFeaturesMap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HouseId" Type="int" />
+    <Property Name="HouseFeatureId" Type="int" />
+  </EntityType>
+  <EntityType Name="HouseInfomation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HouseCategoryId" Type="int" />
+    <Property Name="HouseName" Type="nvarchar" MaxLength="255" />
+    <Property Name="HouseTitle" Type="nvarchar" MaxLength="255" />
+    <Property Name="RoomNumber" Type="int" />
+    <Property Name="FloorNumber" Type="int" />
+    <Property Name="YearEstablish" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image1" Type="nvarchar(max)" />
+    <Property Name="Image2" Type="nvarchar(max)" />
+    <Property Name="Image3" Type="nvarchar(max)" />
+    <Property Name="Image4" Type="nvarchar(max)" />
+    <Property Name="Image5" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="LocationLat" Type="float" />
+    <Property Name="LocationLng" Type="float" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="HouseRooms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="HouseRoomsMap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HouseId" Type="int" />
+    <Property Name="HouseRoomId" Type="int" />
+    <Property Name="QuantityRoom" Type="float" />
+  </EntityType>
+  <EntityType Name="HouseType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="HouseTypesMap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HouseId" Type="int" />
+    <Property Name="HouseTypeId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'FPT_RealEstate.dbo.Posts' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Posts">
+          <Property Name="Id" Type="int" />
+          <Property Name="HouseId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_HouseFeaturesMap_HouseFeatures">
+    <End Role="HouseFeatures" Type="Self.HouseFeatures" Multiplicity="0..1" />
+    <End Role="HouseFeaturesMap" Type="Self.HouseFeaturesMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseFeatures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseFeaturesMap">
+        <PropertyRef Name="HouseFeatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseInfomation_HouseCategory">
+    <End Role="HouseCategory" Type="Self.HouseCategory" Multiplicity="0..1" />
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseInfomation">
+        <PropertyRef Name="HouseCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseInfomation_HouseFeaturesMap">
+    <End Role="HouseFeaturesMap" Type="Self.HouseFeaturesMap" Multiplicity="1" />
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HouseFeaturesMap">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseInfomation">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseRoomsMap_HouseInfomation">
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="0..1" />
+    <End Role="HouseRoomsMap" Type="Self.HouseRoomsMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseInfomation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseRoomsMap">
+        <PropertyRef Name="HouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseRoomsMap_HouseRooms">
+    <End Role="HouseRooms" Type="Self.HouseRooms" Multiplicity="0..1" />
+    <End Role="HouseRoomsMap" Type="Self.HouseRoomsMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseRooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseRoomsMap">
+        <PropertyRef Name="HouseRoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseTypesMap_HouseInfomation">
+    <End Role="HouseInfomation" Type="Self.HouseInfomation" Multiplicity="0..1" />
+    <End Role="HouseTypesMap" Type="Self.HouseTypesMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseInfomation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseTypesMap">
+        <PropertyRef Name="HouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseTypesMap_HouseType">
+    <End Role="HouseType" Type="Self.HouseType" Multiplicity="0..1" />
+    <End Role="HouseTypesMap" Type="Self.HouseTypesMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HouseType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseTypesMap">
+        <PropertyRef Name="HouseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'FPT_RealEstate.dbo.Posts' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Posts_CustomerInfomation" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'FPT_RealEstate.dbo.Posts' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Posts_HouseInfomation" />-->
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="FPTRealEstateModelStoreContainer">
+    <EntitySet Name="CustomerInfomation" EntityType="Self.CustomerInfomation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeInfomation" EntityType="Self.HomeInfomation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseCategory" EntityType="Self.HouseCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseFeatures" EntityType="Self.HouseFeatures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseFeaturesMap" EntityType="Self.HouseFeaturesMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseInfomation" EntityType="Self.HouseInfomation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseRooms" EntityType="Self.HouseRooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseRoomsMap" EntityType="Self.HouseRoomsMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseType" EntityType="Self.HouseType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseTypesMap" EntityType="Self.HouseTypesMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HouseFeaturesMap_HouseFeatures" Association="Self.FK_HouseFeaturesMap_HouseFeatures">
+      <End Role="HouseFeatures" EntitySet="HouseFeatures" />
+      <End Role="HouseFeaturesMap" EntitySet="HouseFeaturesMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseInfomation_HouseCategory" Association="Self.FK_HouseInfomation_HouseCategory">
+      <End Role="HouseCategory" EntitySet="HouseCategory" />
+      <End Role="HouseInfomation" EntitySet="HouseInfomation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseInfomation_HouseFeaturesMap" Association="Self.FK_HouseInfomation_HouseFeaturesMap">
+      <End Role="HouseFeaturesMap" EntitySet="HouseFeaturesMap" />
+      <End Role="HouseInfomation" EntitySet="HouseInfomation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseRoomsMap_HouseInfomation" Association="Self.FK_HouseRoomsMap_HouseInfomation">
+      <End Role="HouseInfomation" EntitySet="HouseInfomation" />
+      <End Role="HouseRoomsMap" EntitySet="HouseRoomsMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseRoomsMap_HouseRooms" Association="Self.FK_HouseRoomsMap_HouseRooms">
+      <End Role="HouseRooms" EntitySet="HouseRooms" />
+      <End Role="HouseRoomsMap" EntitySet="HouseRoomsMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseTypesMap_HouseInfomation" Association="Self.FK_HouseTypesMap_HouseInfomation">
+      <End Role="HouseInfomation" EntitySet="HouseInfomation" />
+      <End Role="HouseTypesMap" EntitySet="HouseTypesMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseTypesMap_HouseType" Association="Self.FK_HouseTypesMap_HouseType">
+      <End Role="HouseType" EntitySet="HouseType" />
+      <End Role="HouseTypesMap" EntitySet="HouseTypesMap" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
